@@ -89,7 +89,7 @@ public class SaveProduct extends HttpServlet {
         // sends the statement to the database server
         prc.insertProudct(pr);
         
-        response.sendRedirect("http://localhost:8080/SoftwareProject/pages/dynamic/c_profile/index.jsp");
+        response.sendRedirect("http://localhost:8080/SoftwareProject/pages/dynamic/profile/profile.jsp");
         
     }
     

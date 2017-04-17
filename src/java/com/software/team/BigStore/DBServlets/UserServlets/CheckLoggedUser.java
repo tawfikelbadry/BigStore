@@ -62,7 +62,7 @@ public class CheckLoggedUser {
 //                        + "        <li role=\"separator\" class=\"divider\"></li>"
                         + "        <li><a href=\"/SoftwareProject/pages/dynamic/products/cart/checkout.jsp\" style=\"color:black\">My Chart</a></li>"
                         + "        <li><a href=\"/SoftwareProject/pages/dynamic/payment/index.jsp\" style=\"color:black\">Pay Now</a></li>"
-                        + "        <li><a href=\"/SoftwareProject/pages/dynamic/c_profile/index.jsp\" style=\"color:black\">profile</a></li>"
+                        + "        <li><a href=\"/SoftwareProject/pages/dynamic/profile/profile.jsp\" style=\"color:black\">profile</a></li>"
 
                         + "        <li><a href=\"/SoftwareProject/pages/static/contact.jsp\" style=\"color:black\">Help</a></li>"
 //                        + "        <li role=\"separator\" class=\"divider\"></li>"

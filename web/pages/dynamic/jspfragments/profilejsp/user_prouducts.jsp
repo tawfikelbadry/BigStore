@@ -8,7 +8,9 @@
 <%@page import="com.software.team.BigStore.model.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.software.team.BigStore.model.User"%>
+
 <!-- tawfik -->
+
 <%! User user;%>
 <% if (session.getAttribute("normal") != null) {
         user = (User) session.getAttribute("normal");
@@ -35,6 +37,12 @@
         <label>Address <%= user.getUser_location()%></label> 
     </div>
 </div>
+    
+    
+    
+    
+    
+    
 <div class="all-2-2">
     <div class="container">
         <div class="row">

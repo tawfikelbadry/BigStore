@@ -12,7 +12,7 @@
     ProductController pc = new ProductController();
     pc.deleteProuduct(pr_id);
     
-    response.sendRedirect("http://localhost:8080/SoftwareProject/pages/dynamic/c_profile/index.jsp");
+    response.sendRedirect("http://localhost:8080/SoftwareProject/pages/dynamic/profile/profile.jsp");
     
 
 %>
