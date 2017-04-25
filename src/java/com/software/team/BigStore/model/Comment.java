@@ -19,6 +19,7 @@ public class Comment implements Serializable {
     @ManyToOne
     @JoinColumn(name = "prouduct_id")
     private Product post_id;
+    
     @OneToOne
     @JoinColumn(name = "commentor_id")
     private User commentator;

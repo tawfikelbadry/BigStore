@@ -15,6 +15,20 @@
     <servlet>
         <servlet-name>SaveProduct</servlet-name>
         <servlet-class>com.software.team.BigStore.DBServlets.ProductServlets.SaveProduct</servlet-class>
+        <multipart-config>
+            <location>/tmp</location>
+            <max-file-size>20848820</max-file-size>
+            <max-request-size>418018841</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet>
+        <servlet-name>testImagefromBlob</servlet-name>
+        <servlet-class>com.software.team.BigStore.DBServlets.ImageServlets.testImagefromBlob</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProduct</servlet-name>
+        <servlet-class>com.software.team.BigStore.DBServlets.ProductServlets.UpdateProduct</servlet-class>
         
         <multipart-config>
             <location>/tmp</location>
@@ -22,11 +36,6 @@
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
         </multipart-config>
-        
-    </servlet>
-    <servlet>
-        <servlet-name>testImagefromBlob</servlet-name>
-        <servlet-class>com.software.team.BigStore.DBServlets.ImageServlets.testImagefromBlob</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>saveUser</servlet-name>
@@ -48,8 +57,10 @@
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/CheckLogin</url-pattern>
     </servlet-mapping>
-  
-    
+    <servlet-mapping>
+        <servlet-name>UpdateProduct</servlet-name>
+        <url-pattern>/UpdateProduct</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -59,6 +70,3 @@
         <welcome-file>pages/dynamic/home/index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
-
-  
-

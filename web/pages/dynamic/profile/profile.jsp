@@ -1,3 +1,6 @@
+<%@page import="com.software.team.BigStore.Controllers.ProductController"%>
+<%@page import="com.software.team.BigStore.model.Prouduct_like"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.software.team.BigStore.model.SubCategory"%>
 <!--Profile page-->
 
@@ -13,7 +16,7 @@
 
             .page-header {background:#ccc;margin:0;}
 
-            .profile-head { height:300px; width:100%;background-color: rgb(255, 102, 0);float: left; position: relative;}
+            .profile-head { width:100%;background-color: rgb(255, 102, 0);float: left; position: relative;}
             .profile-head img { margin:0 auto; border-radius:5px; max-width: 100%; width: 100%;}
             .profile-head h5 {width: 100%;padding:5px 5px 0px 5px;text-align:justify;font-weight: bold;color: #555;font-size: 25px;text-transform:capitalize;
                               margin-bottom: 0;}
@@ -84,8 +87,10 @@
                 font-size:1.4em;
             }
         </style>
+
         <script src="jq.js"></script>
         <script src="bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
+        <script src="load_image.js"></script>
     </head>
     <body>
 
@@ -100,16 +105,32 @@
 
 
 
+
         <br>
 
 
         <!--=========================Starting To Add product ===========================-->
 
+        <%
+            // id of prouduct  to be edited
+            int prdct_id = 0;
+            if (request.getParameter("edit") != null) {
+                prdct_id = Integer.parseInt(request.getParameter("edit"));
+
+            };
+
+        %>
+
         <div>
-            <form method="post" action="http://localhost:8080/SoftwareProject/SaveProduct" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
 
                 <fieldset>
-
+                    <%  Product prd = new Product(); %>
+                    <%
+                        if (prdct_id != 0) {
+                            prd = pc.getProudct(prdct_id);
+                        }
+                    %>
 
 
 
@@ -117,7 +138,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="product-name">product name</label>  
                         <div class="col-md-6">
-                            <input id="name" name="product-name" type="text" placeholder="product name" class="form-control input-md" required="true">
+                            <input id="name" name="product-name" type="text" placeholder="product name" class="form-control input-md" required="true" 
+                                   value="<%
+                                       if (prdct_id != 0) {
+                                           out.print(prd.getProduct_name());
+                                       }
+                                   %>"
+                                   />
 
                         </div>
                     </div>
@@ -126,7 +153,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="product-desc">Description</label>  
                         <div class="col-md-6">
-                            <input id="email" name="product-desc" type="text" placeholder="write particular description for item" class="form-control input-md" required="true">
+                            <input id="email" name="product-desc" type="text" placeholder="write particular description for item" class="form-control input-md" required="true"
+                                   value="<%
+                                       if (prdct_id != 0) {
+                                           out.print(prd.getProduct_details());
+                                       }
+                                   %>"
+                                   />
 
                         </div>
                     </div>
@@ -135,7 +168,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="product-price">price - unit</label>  
                         <div class="col-md-6">
-                            <input id="company" name="product-price" type="text" placeholder=" 10 LE" class="form-control input-md" required="true">
+                            <input id="company" name="product-price" type="text" placeholder=" 10 LE" class="form-control input-md" required="true"
+                                   value="<%
+                                       if (prdct_id != 0) {
+                                           out.print(prd.getProduct_price());
+                                       }
+                                   %>"
+                                   />
 
                         </div>
                     </div>
@@ -144,12 +183,22 @@
                         <label class="col-md-4 control-label" for="category">category</label>
                         <div class="col-md-6">
 
-
+                            <%String prdct_cat = "";
+                                if (prdct_id != 0) {
+                                    prdct_cat = prd.getProduct_category().getCat_name();
+                                } %>
                             <select id="selectbasic" name="category" class="form-control">
                                 <% ArrayList<SubCategory> prs = pc.getSubCategories(); %>
 
-                                <%for (SubCategory sub : prs) {%>
-                                <option value="<%=sub.getSub_cat_id()%>"><%=sub.getCat_name()%></option>
+                                <% for (SubCategory sub : prs) {%>
+                                <option 
+                                    <%     if (prdct_id != 0) {
+                                            if (prdct_cat.equals(sub.getCat_name())) {
+                                                out.print("selected");
+                                            }
+                                        }%>
+
+                                    value="<%=sub.getSub_cat_id()%>"><%=sub.getCat_name()%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -159,8 +208,9 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Expired date</label>  
                         <div class="col-md-6 ">
-                            <input id="textinput" name="expire-date" type="date" placeholder="" class="form-control input-md">
-                            
+                            <input id="textinput" name="expire-date" type="date" placeholder="" class="form-control input-md" 
+                                   value="<%=prd.getExpiry_date()%>" />
+
                         </div>
                         <div class="clearfix "></div>
                     </div>
@@ -168,7 +218,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="imgbutton">Product Image </label>
                         <div class="col-md-6" >
-                            <input id="filebutton" name="imgbutton" class="input-file" type="file">
+                            <input id="filebutton" name="imgbutton" class="input-file" type="file" accept="image/gif , image/png , image/jpeg"  onchange="readUrl(this)" />
+                            <img id="pr-img" style="width: 350px;height: 350px" class="center-block img-thumbnail" alt="image" 
+                                 src="<%
+                                     if (prdct_id != 0) {
+                                     out.print("../jspfragments/retrive_image.jsp?imgId="+prd.getProduct_id());
+                                     }
+                                 %>" />
                         </div>
                     </div>
 
@@ -177,8 +233,18 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton"></label>
                         <div class="col-md-4">
-                            
-                            <center> <input style="margin: 10px" class="btn btn-primary" type="submit" value="Add The product"></center>
+
+                            <%-- if the user request page not edit product --%>
+                            <%  if (prdct_id == 0) { %>
+                            <center>  <input style = "margin: 10px" class ="btn btn-primary" type="submit" value="Save product" onclick="form.action = 'http://localhost:8080/SoftwareProject/SaveProduct'"></center>
+                                <%-- if the user request page to edit product --%>
+                                <% } else {
+                                %>
+                            <input hidden="true" name="edit_id" value="<%=prdct_id%>" />
+                            <center>  <input style = "margin: 10px" class ="btn btn-primary" type="submit" value="Update product" onclick="form.action = 'http://localhost:8080/SoftwareProject/UpdateProduct'"></center>
+
+                            <% }%>
+
                         </div>
                     </div>
                     <input name="userIdHidden" hidden="true" type="text" value="<%= user.getUser_id()%>" />

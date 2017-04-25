@@ -17,7 +17,6 @@ import org.hibernate.Session;
  *
  * @author tawfik
  */
-
 public class ProductController {
 
     private Connection con = null;
@@ -37,15 +36,47 @@ public class ProductController {
 
     }
 
-    public void deleteProuduct(int pr_id) {
-        
+    public void updateProduct(int pr_id, Product p) {
         Session session = con.getSession();
-        Product pr=(Product) session.get(Product.class, pr_id);
+        Product pr = (Product) session.get(Product.class, pr_id);
+        System.out.println("------------ > "+pr_id);
+       pr.setProduct_name(p.getProduct_name());
+        pr.setExpiry_date(p.getExpiry_date());
+        pr.setProduct_category(p.getProduct_category());
+        pr.setProduct_details(p.getProduct_details());
+        pr.setProduct_price(p.getProduct_price());
+        if (p.getProduct_image() != null) {
+            pr.setProduct_image(p.getProduct_image());
+        }
+        session.save(pr);
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
+    public void deleteProuduct(int pr_id) {
+
+        Session session = con.getSession();
+        Product pr = (Product) session.get(Product.class, pr_id);
         session.delete(pr);
         session.getTransaction().commit();
         session.close();
     }
 
+//     public void deleteProuduct(int pr_id) {
+//
+//        Session session = con.getSession();
+//        Query query = session.createQuery("delete Product where product_id = :ID ");
+//        query.setParameter("ID", pr_id);
+//
+//        int result = query.executeUpdate();
+//
+//        if (result > 0) {
+//            System.out.println("Expensive products was removed");
+//        }
+//        session.getTransaction().commit();
+//        session.close();
+//    }
     public ArrayList<Product> getAllProuducts() {
         ArrayList<Product> all_prouducts;
 
@@ -178,11 +209,12 @@ public class ProductController {
 //        for (int i = 0; i < prs.size(); i++) {
 //            System.out.println(prs.get(i).getProduct_name());
 //        }
-        ArrayList<Product> prs = cn.getProudctsForUser(1);
-
-        for (int i = 0; i < prs.size(); i++) {
-            System.out.println(prs.get(i).getProduct_name());
-        }
+//        ArrayList<Product> prs = cn.getProudctsForUser(1);
+//
+//        for (int i = 0; i < prs.size(); i++) {
+//            System.out.println(prs.get(i).getProduct_name());
+//        }
+        System.out.println(cn.getProudct(2).getExpiry_date());
 
     }
 
