@@ -74,7 +74,7 @@
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         $().UItoTop({easingType: 'easeOutQuart'});
 
@@ -96,10 +96,10 @@
 <script src="/SoftwareProject/resources/js/skdslider.min.js"></script>
 <link href="/SoftwareProject/resources/css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
         jQuery('#demo1').skdslider({'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading'});
 
-        jQuery('#responsive').change(function () {
+        jQuery('#responsive').change(function() {
             $('#responsive_wrapper').width(jQuery(this).val());
         });
 

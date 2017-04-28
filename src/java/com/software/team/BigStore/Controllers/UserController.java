@@ -105,4 +105,20 @@ public class UserController {
     public void commitChanges() {
         session.getTransaction().commit();
     }
+
+    public boolean isFollowing(int user_id, int company_id) {
+        
+        NormalUser normal = (NormalUser) session.get(NormalUser.class, user_id);
+        Company company = (Company) session.get(Company.class, company_id);
+        
+        List<Company> following = normal.getFollowingCompanies();
+        for(int i = 0; i < following.size(); i++) {
+            if (following.get(i).getUser_id() == company.getUser_id()) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
 }

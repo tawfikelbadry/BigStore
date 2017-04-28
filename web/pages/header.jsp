@@ -22,8 +22,8 @@
         <script type="text/javascript" src="/SoftwareProject/resources/js/move-top.js"></script>
         <script type="text/javascript" src="/SoftwareProject/resources/js/easing.js"></script>
         <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $(".scroll").click(function (event) {
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event) {
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
                 });
@@ -32,7 +32,7 @@
         <!-- start-smoth-scrolling -->
     </head>
 
-    <body>
+    <body style="background-color: #FFF;">
         <!-- header -->
         <div class="agileits_header">
             <div class="container">
@@ -44,7 +44,7 @@
                         <!-- check if a user is logged in -->
                         <li><a href="/SoftwareProject/pages/dynamic/activities/questions/faq.jsp">FAQ</a></li>
                         <li><a href="/SoftwareProject/pages/static/about.jsp">About</a></li>
-                        <%@include file="/pages/dynamic/jspfragments/userjsp/checkLoggedUser.jsp" %>
+                            <%@include file="/pages/dynamic/jspfragments/userjsp/checkLoggedUser.jsp" %>
 
                     </ul>
 

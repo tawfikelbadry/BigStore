@@ -26,8 +26,8 @@
         <script type="text/javascript" src="/SoftwareProject/resources/js/move-top.js"></script>
         <script type="text/javascript" src="/SoftwareProject/resources/js/easing.js"></script>
         <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $(".scroll").click(function (event) {
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event) {
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
                 });
@@ -51,9 +51,9 @@
                         <li><a href="/SoftwareProject/pages/dynamic/products/cart/checkout.jsp">My Chart</a></li>
                         <li><a href="/SoftwareProject/pages/static/about.jsp">About</a></li>
                         <li class="dropdown menu__item menu__dropDown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <i class="fa fa-cog fa-spin"></i>
-                                </button>
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <i class="fa fa-cog fa-spin"></i>
+                            </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
                                 <li><a style="color:black"href="/SoftwareProject/pages/dynamic/activities/questions/faq.jsp">Ask Question</a></li>
@@ -289,36 +289,36 @@
                                 <!-- top-header and slider -->
                                 <!-- here stars scrolling icon -->
                                 <script type="text/javascript">
-                                    $(document).ready(function () {
+            $(document).ready(function() {
 
-                                        $().UItoTop({easingType: 'easeOutQuart'});
+                $().UItoTop({easingType: 'easeOutQuart'});
 
-                                    });
+            });
                                 </script>
                                 <!-- //here ends scrolling icon -->
                                 <script src="/SoftwareProject/resources/js/minicart.min.js"></script>
                                 <script>
-                                // Mini Cart
-                                    paypal.minicart.render({
-                                        action: '#'
-                                    });
+            // Mini Cart
+            paypal.minicart.render({
+                action: '#'
+            });
 
-                                    if (~window.location.search.indexOf('reset=true')) {
-                                        paypal.minicart.reset();
-                                    }
+            if (~window.location.search.indexOf('reset=true')) {
+                paypal.minicart.reset();
+            }
                                 </script>
                                 <!-- main slider-banner -->
                                 <script src="/SoftwareProject/resources/js/skdslider.min.js"></script>
                                 <link href="/SoftwareProject/resources/css/skdslider.css" rel="stylesheet">
                                 <script type="text/javascript">
-                                    jQuery(document).ready(function () {
-                                        jQuery('#demo1').skdslider({'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading'});
+            jQuery(document).ready(function() {
+                jQuery('#demo1').skdslider({'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading'});
 
-                                        jQuery('#responsive').change(function () {
-                                            $('#responsive_wrapper').width(jQuery(this).val());
-                                        });
+                jQuery('#responsive').change(function() {
+                    $('#responsive_wrapper').width(jQuery(this).val());
+                });
 
-                                    });
+            });
                                 </script>
                                 <!-- //main slider-banner -->
                                 </body>
